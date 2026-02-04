@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrie Lorraine | Cosmic Logic Art</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #0a0a15;
+            color: #e8e8f0;
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 21, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #b8a9ff;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #e8e8f0;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: #b8a9ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, #0a0a15 0%, #1a1a3e 50%, #2d1b3d 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(65, 105, 225, 0.15) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #b8a9ff 0%, #8b5cf6 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #c4b5fd;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: #d1d5db;
+            font-style: italic;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(184, 169, 255, 0.1);
+            color: #b8a9ff;
+            border: 1px solid rgba(184, 169, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(184, 169, 255, 0.2);
+            border-color: rgba(184, 169, 255, 0.5);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #b8a9ff 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Book Section */
+        .book-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .book-cover {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+        }
+
+        .book-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #c4b5fd;
+        }
+
+        .book-info p {
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+            font-size: 1.1rem;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #d1d5db;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: #b8a9ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ec4899;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(10, 10, 21, 0.8);
+            color: #9ca3af;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .book-showcase {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="#home" class="logo">COSMIC LOGIC ART</a>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#book">Book</a></li>
+                <li><a href="#gallery">Art</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Carrie Lorraine</h1>
+            <p class="subtitle">Artist • Author • Astrologer</p>
+            <p class="tagline">Where cosmic patterns meet canvas and page — translating celestial systems into visual art and practical wisdom</p>
+            <div class="cta-buttons">
+                <a href="#book" class="btn btn-primary">Explore the Book</a>
+                <a href="#gallery" class="btn btn-secondary">View Art Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="book">
+        <h2>The Cosmic Love Map</h2>
+        <div class="book-showcase">
+            <div>
+                <img src="book-cover.jpg" alt="The Cosmic Love Map book cover" class="book-cover">
+            </div>
+            <div class="book-info">
+                <h3>A Modern Guide to Love Through Astrology</h3>
+                <p>Love leaves patterns. This book treats astrology as a map, not a mandate. Your chart doesn't decide who you're allowed to love—it sketches your default routes, giving you the awareness to navigate relationships with intention rather than luck.</p>
+                <p>Explore your Sun, Moon, Rising, and Venus placements to understand what you pursue, what you need, how you attract, and how you experience pleasure.</p>
+                <a href="https://www.amazon.com/dp/B0G526YJVJ" target="_blank" class="btn btn-primary">Get the Book on Amazon</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Art Portfolio</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; color: #d1d5db; font-size: 1.1rem;">
+            Each painting is a meditation on cosmic forces—nebulas birthing stars, celestial bodies in motion, the divine mathematics of existence rendered in color and texture.
+        </p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="art1.jpg" alt="Cosmic artwork 1">
+            </div>
+            <div class="gallery-item">
+                <img src="art2.jpg" alt="Cosmic artwork 2">
+            </div>
+            <div class="gallery-item">
+                <img src="art3.jpg" alt="Cosmic artwork 3">
+            </div>
+            <div class="gallery-item">
+                <img src="art4.jpg" alt="Cosmic artwork 4">
+            </div>
+            <div class="gallery-item">
+                <img src="art5.jpg" alt="Cosmic artwork 5">
+            </div>
+            <div class="gallery-item">
+                <img src="art6.jpg" alt="Cosmic artwork 6">
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About</h2>
+        <div class="about-content">
+            <p>Carrie Lorraine is a multidisciplinary artist and astrologer whose work blends intuitive insight with bold, emotional painting and cosmic digital design.</p>
+            <p>Through her Cosmic Logic Art brand, she explores patterns of love, identity, and human connection—translating cosmic systems into practical tools for self-understanding.</p>
+            <p>Her books and artwork invite readers to see the larger pattern behind their experiences and navigate life with clarity, curiosity, and depth.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Connect</h2>
+        <div class="contact-info">
+            <p style="font-size: 1.2rem; color: #d1d5db; margin-bottom: 1rem;">
+                For commissions, collaborations, or inquiries:
+            </p>
+            <p style="font-size: 1.3rem; color: #b8a9ff; margin-bottom: 2rem;">
+                <a href="/cdn-cgi/l/email-protection#ef8c809c82868c838088868c8e9d9baf88828e8683c18c8082" style="color: #b8a9ff; text-decoration: none;"><span class="__cf_email__" data-cfemail="bbd8d4c8d6d2d8d7d4dcd2d8dac9cffbdcd6dad2d795d8d4d6">[email&#160;protected]</span></a>
+            </p>
+            <div class="social-links">
+                <a href="https://instagram.com/cosmiclogicart" target="_blank">Instagram</a>
+                <a href="https://facebook.com/cosmiclogicart" target="_blank">Facebook</a>
+                <a href="https://youtube.com/@cosmiclogicart" target="_blank">YouTube</a>
+                <a href="https://tiktok.com/@carrielorraine" target="_blank">TikTok</a>
+            </div>
+        </div
